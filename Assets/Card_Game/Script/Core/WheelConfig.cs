@@ -10,7 +10,9 @@ namespace CardGame.Core
         [Header("Reward Pool (20-30 item ekleyebilirsin)")]
         [Tooltip("Çarkta çıkma ihtimali olan TÜM ödüllerin havuzu")]
         public List<WheelSlice> rewardPool = new List<WheelSlice>();
-
+        [Header("Wheel Visuals")]
+        [Tooltip("Bu çarkın arka plan görseli (Bronz, Gümüş veya Altın texture)")]
+        public Sprite wheelBackgroundSprite;
         // Havuzdan ağırlıklara (şansa) göre rastgele 8 adet dilim seçer
         public WheelSlice[] GenerateRandom8Slices()
         {

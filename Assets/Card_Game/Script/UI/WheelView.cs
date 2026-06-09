@@ -24,6 +24,12 @@ namespace CardGame.UI
         {
             if (config == null) return;
 
+            // YENİ EKLENEN SATIR: Çarkın arka plan resmini Config'den gelen resimle değiştir
+            if (config.wheelBackgroundSprite != null)
+            {
+                ui_image_wheel_base.GetComponent<UnityEngine.UI.Image>().sprite = config.wheelBackgroundSprite;
+            }
+
             // 1. Config havuzundan rastgele 8 adet dilim üret
             CurrentActiveSlices = config.GenerateRandom8Slices();
 
@@ -40,13 +46,6 @@ namespace CardGame.UI
                 sliceViews[i].Setup(CurrentActiveSlices[i]);
             }
         }
-
-        public void Spin()
-        {
-            SpinToSlice(3,
-                () => { Debug.Log("Test Basarili"); });
-        }
-
         
         public void SpinToSlice(int targetSliceIndex, Action onComplete)
         {

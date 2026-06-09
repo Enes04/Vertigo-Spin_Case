@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 499f008d82fd741eba4e0b8402edc738, type: 3}
   m_Name: Boost_pistol
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 6
   amount: 0
-  rewardIcon: {fileID: 21300000, guid: 8d69bbb4315023a4083dfe08f4748aa0, type: 3}
+  rewardIcon: {fileID: 21300000, guid: 82c9cbdfd82fe044791cf9c0f668f3f6, type: 3}

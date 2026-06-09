@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 499f008d82fd741eba4e0b8402edc738, type: 3}
   m_Name: Chest_silver
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 2
