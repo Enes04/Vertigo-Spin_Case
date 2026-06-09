@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CardGame.Core
 {
    public enum ZoneType
@@ -6,4 +8,5 @@ namespace CardGame.Core
       Safe,
       Super
    }
+  
 }

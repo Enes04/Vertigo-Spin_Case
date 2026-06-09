@@ -1,0 +1,17 @@
+{
+    "name": "CardGame.GameLogic",
+    "rootNamespace": "CardGame.GameLogic",
+    "references": [
+        "GUID:f1163cd720e2a4891b171fb5c8b164f3",
+        "GUID:3dfc44a9542774fe78709a14d658a271"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
