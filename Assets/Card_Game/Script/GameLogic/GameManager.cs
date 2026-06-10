@@ -16,24 +16,34 @@ namespace CardGame.GameLogic
         [SerializeField] private WheelConfig normalWheelPool;
         [SerializeField] private WheelConfig silverWheelPool;
         [SerializeField] private WheelConfig goldWheelPool;
-
+        [SerializeField] private RewardPopupView rewardPopupView;
+        [SerializeField] private ZoneScrollerView zoneScrollerView;
+        [SerializeField] private InventoryPanelView inventoryPanelView; // YENİ EKLENDİ
         // Arka plan yöneticilerimiz
         private ZoneManager _zoneManager;
         private SpinCalculator _spinCalculator;
 
         private void Start()
         {
-            // Yöneticileri "new" anahtar kelimesiyle ayağa kaldırıyoruz (Memory'de yaratıyoruz)
+          
             _zoneManager = new ZoneManager();
             _spinCalculator = new SpinCalculator();
-
-            // DOKÜMAN KURALI: Unity Event (Inspector) yerine kodu dinliyoruz!
+            _zoneManager.OnZoneChanged += HandleZoneChanged;
+            
             spinButton.onClick.AddListener(OnSpinButtonClicked);
 
-            // Oyuna başlarken ilk çarkı hazırla
             PrepareWheelForCurrentZone();
+            
+            
         }
-
+        private void HandleZoneChanged(int newZone, ZoneType zoneType)
+        {
+           
+            if (zoneScrollerView != null)
+            {
+                zoneScrollerView.AdvanceOneZone();
+            }
+        }
         private void PrepareWheelForCurrentZone()
         {
             WheelConfig currentConfig = normalWheelPool;
@@ -73,25 +83,27 @@ namespace CardGame.GameLogic
 
         private void OnSpinCompleted(WheelSlice winningSlice)
         {
+        
             // Ödül Bomba mı kontrol et
             if (winningSlice.reward.isBomb)
             {
-                Debug.Log("💥 BOMBAYA BASILDI! (Burada Revive/Pes Et ekranı açılacak)");
                 _zoneManager.HandleBombHit();
+                inventoryPanelView.ClearInventory();
             }
             else
             {
-                Debug.Log($"🎉 KAZANDIN: {winningSlice.reward.amount} {winningSlice.reward.rewardType}");
-                
-                // Bölgeyi 1 ilerlet
                 _zoneManager.AdvanceZone();
                 
-                // Bir sonraki tur için çarkın içindeki 8'liyi taze ve yeni kurallara göre hazırla
-                PrepareWheelForCurrentZone();
+                rewardPopupView.ShowReward(winningSlice, () => 
+                {
+                    inventoryPanelView.AddReward(winningSlice.reward);
+                    PrepareWheelForCurrentZone();
+                    spinButton.interactable = true;
+                });
             }
 
             // Animasyon ve işlemler bitti, butonu yeni tur için aktif et
-            spinButton.interactable = true;
+         
         }
 
         private void OnDestroy()
@@ -100,6 +112,11 @@ namespace CardGame.GameLogic
             if (spinButton != null)
             {
                 spinButton.onClick.RemoveListener(OnSpinButtonClicked);
+            }
+            
+            if (_zoneManager != null)
+            {
+                _zoneManager.OnZoneChanged -= HandleZoneChanged;
             }
         }
     }

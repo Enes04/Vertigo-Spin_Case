@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Chest_small
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 2
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: 9294812a45f148a4882499c5ff143dd9, type: 3}

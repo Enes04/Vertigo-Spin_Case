@@ -12,8 +12,8 @@ namespace CardGame.UI
         [SerializeField] private RectTransform container;
 
         [Header("Settings")]
-        [SerializeField] private int visibleItemCount = 8; // Sağ tarafta bekleyen/görünen kutu sayısı
-        [SerializeField] private int itemsToKeepOnLeft = 3; // Merkezin soluna geçince kaç kutu ekranda kalsın?
+        [SerializeField] private int visibleItemCount = 8; 
+        [SerializeField] private int itemsToKeepOnLeft = 3;
         [SerializeField] private float itemWidth = 150f;
         [SerializeField] private float spacing = 20f;
         [SerializeField] private float animationDuration = 0.5f;
@@ -22,7 +22,7 @@ namespace CardGame.UI
         private int _currentHighestZone = 1;
         private float _stepDistance;
         
-        // Spam koruması için kilit mekanizması
+      
         private bool _isAnimating = false; 
 
         private void Start()
@@ -35,7 +35,7 @@ namespace CardGame.UI
             _stepDistance = itemWidth + spacing;
             _currentHighestZone = 1;
 
-            // Havuz boyutunu sol tarafta tutacağımız kutu sayısı kadar büyütüyoruz
+         
             int totalPoolSize = visibleItemCount + itemsToKeepOnLeft; 
 
             for (int i = 0; i < totalPoolSize; i++)
@@ -54,12 +54,12 @@ namespace CardGame.UI
 
         public void AdvanceOneZone()
         {
-            // Eğer animasyon devam ediyorsa, yeni basımları yok say (Spam Koruması)
+        
             if (_isAnimating) return; 
             _isAnimating = true;
-
+            Debug.Log("AdvanceZone");
             int completedTweens = 0;
-            // Yok olma sınırını belirlediğimiz sayı kadar sola çekiyoruz
+         
             float despawnThreshold = -(_stepDistance * itemsToKeepOnLeft); 
 
             for (int i = 0; i < _activeItems.Count; i++)
@@ -69,16 +69,16 @@ namespace CardGame.UI
 
                 item.RectTransform.DOAnchorPosX(newX, animationDuration).SetEase(Ease.InOutSine).OnComplete(() =>
                 {
-                    // Nesne belirlenen yok olma sınırından (sol uçtan) daha sola gittiyse sağa ışınla
+                 
                     if (newX < despawnThreshold)
                     {
                         RecycleItem(item);
                     }
 
-                    // Kaç nesnenin animasyonunu tamamladığını say
+                   
                     completedTweens++;
                     
-                    // Tüm nesneler hedefine vardığında kilidi kaldır ve yeni basımlara izin ver
+                  
                     if (completedTweens == _activeItems.Count)
                     {
                         _isAnimating = false;

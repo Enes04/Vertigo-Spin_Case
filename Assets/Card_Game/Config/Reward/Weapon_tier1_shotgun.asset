@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Weapon_tier1_shotgun
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 5
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: aaa8e281ce881454d834307142a17f2e, type: 3}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boost_shotgun
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 6
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: 8bc705b3a2080894698853eb5c1fc96f, type: 3}

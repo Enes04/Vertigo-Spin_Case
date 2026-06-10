@@ -14,55 +14,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardPool:
   - reward: {fileID: 11400000, guid: 32daff7268fe64777b8a04e67822e0ea, type: 2}
-    dropWeight: 0
+    dropWeight: 14
   - reward: {fileID: 11400000, guid: a58449114602447c3aa92cbc4e7361db, type: 2}
-    dropWeight: 0
+    dropWeight: 25
   - reward: {fileID: 11400000, guid: 29dc1a77718df4318805cad29aa3885d, type: 2}
-    dropWeight: 0
+    dropWeight: 38
   - reward: {fileID: 11400000, guid: 93b2ccb94dca9453c8110db103faa0ba, type: 2}
-    dropWeight: 0
+    dropWeight: 19
   - reward: {fileID: 11400000, guid: 2b86d633edbbb4b7cae31234525dda84, type: 2}
-    dropWeight: 0
+    dropWeight: 26
   - reward: {fileID: 11400000, guid: 264394c1a0a584d3ab54a15ea5c65280, type: 2}
-    dropWeight: 0
+    dropWeight: 20
   - reward: {fileID: 11400000, guid: bf3e4f263da1647828742a788e50ee9a, type: 2}
-    dropWeight: 0
+    dropWeight: 22
   - reward: {fileID: 11400000, guid: e4543f3fb7ca34a4e9618fd287b9c755, type: 2}
-    dropWeight: 0
+    dropWeight: 24
   - reward: {fileID: 11400000, guid: 9075a76454dcb4fa090ceea3a04bcee3, type: 2}
-    dropWeight: 0
+    dropWeight: 52
   - reward: {fileID: 11400000, guid: 0443353026b98410ab45a27ad0bf26b7, type: 2}
-    dropWeight: 0
+    dropWeight: 24
   - reward: {fileID: 11400000, guid: 29c275e4c1d264ff08cf646a08c59c4b, type: 2}
-    dropWeight: 0
+    dropWeight: 22
   - reward: {fileID: 11400000, guid: 996c41156b8ef4800b00c74f4353a202, type: 2}
-    dropWeight: 0
+    dropWeight: 24
   - reward: {fileID: 11400000, guid: b44b07de9d8d047018d3babb818e24f8, type: 2}
-    dropWeight: 0
+    dropWeight: 41
   - reward: {fileID: 11400000, guid: 4c3e8506d42c24bd286cd8518fb2c43a, type: 2}
-    dropWeight: 0
+    dropWeight: 44
   - reward: {fileID: 11400000, guid: 676cd4b8801bc475da4faaf579c66505, type: 2}
-    dropWeight: 0
+    dropWeight: 29
   - reward: {fileID: 11400000, guid: 8cf64c5066ea34af5a543a2bfd7e0dcd, type: 2}
-    dropWeight: 0
+    dropWeight: 42
   - reward: {fileID: 11400000, guid: 9c495c76101b64cdf9d6f35dec5a8319, type: 2}
-    dropWeight: 0
+    dropWeight: 38
   - reward: {fileID: 11400000, guid: 19eda29bef9b04998ba8d2920bf2e4b8, type: 2}
-    dropWeight: 0
+    dropWeight: 31
   - reward: {fileID: 11400000, guid: 031c32b3994b14db0ae8feb23aede75a, type: 2}
-    dropWeight: 0
+    dropWeight: 26
   - reward: {fileID: 11400000, guid: b379819debcef463a91937bd29dcbaf0, type: 2}
-    dropWeight: 0
+    dropWeight: 26
   - reward: {fileID: 11400000, guid: 3d86726ef4e304241a3c02a73d6ee9d0, type: 2}
-    dropWeight: 0
+    dropWeight: 30
   - reward: {fileID: 11400000, guid: 94a87cbe794034fd7bcb9bd58ccd8509, type: 2}
-    dropWeight: 0
+    dropWeight: 33
   - reward: {fileID: 11400000, guid: ae337b73e80484555bc63d42c34caf04, type: 2}
-    dropWeight: 0
+    dropWeight: 36
   - reward: {fileID: 11400000, guid: 526893938891a453982a25ba487d9c9e, type: 2}
-    dropWeight: 0
+    dropWeight: 26
   - reward: {fileID: 11400000, guid: 753c21a1c9156444cb3d4486cfa1331a, type: 2}
-    dropWeight: 0
+    dropWeight: 30
   - reward: {fileID: 11400000, guid: 212d4ab49c7a64f4a972033e2f982ef2, type: 2}
-    dropWeight: 0
+    dropWeight: 27
   wheelBackgroundSprite: {fileID: 21300000, guid: d0e86076536438149a0b36ce69382993, type: 3}

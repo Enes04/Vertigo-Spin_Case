@@ -9,70 +9,77 @@ namespace CardGame.UI
     public class WheelView : MonoBehaviour
     {
         [Header("Wheel Settings")] [SerializeField]
-        private RectTransform ui_image_wheel_base; 
+        private RectTransform ui_image_wheel_base;
 
         [SerializeField] private int totalSlices = 8;
-        [SerializeField] private float spinDuration = 3f; 
-        [SerializeField] private int extraSpins = 5; 
+        [SerializeField] private float spinDuration = 3f;
+        [SerializeField] private int extraSpins = 5;
         [SerializeField] private WheelSliceView[] sliceViews;
         public WheelSlice[] CurrentActiveSlices { get; private set; }
-        
-        
+
+
         private bool _isSpinning = false;
 
         public void SetupWheelVisuals(WheelConfig config)
         {
-            if (config == null) return;
+            _isSpinning = true; // Kurulum sırasında spin'i kilitle
 
-            // YENİ EKLENEN SATIR: Çarkın arka plan resmini Config'den gelen resimle değiştir
-            if (config.wheelBackgroundSprite != null)
+            ui_image_wheel_base.transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
             {
-                ui_image_wheel_base.GetComponent<UnityEngine.UI.Image>().sprite = config.wheelBackgroundSprite;
-            }
+                if (config == null)
+                {
+                    _isSpinning = false;
+                    return;
+                }
 
-            // 1. Config havuzundan rastgele 8 adet dilim üret
-            CurrentActiveSlices = config.GenerateRandom8Slices();
+                ui_image_wheel_base.eulerAngles = Vector3.zero;
 
-            // 2. Güvenlik kontrolü: Üretilen sayı ile UI elemanı sayısı uyuyor mu?
-            if (CurrentActiveSlices.Length != sliceViews.Length)
-            {
-                Debug.LogError("Uyarı: Üretilen dilim sayısı ile sahnedeki dilim UI sayısı eşleşmiyor!");
-                return;
-            }
+                if (config.wheelBackgroundSprite != null)
+                    ui_image_wheel_base.GetComponent<UnityEngine.UI.Image>().sprite = config.wheelBackgroundSprite;
 
-            // 3. Üretilen taze 8'li menüyü sahnedeki UI dilimlerine yerleştir
-            for (int i = 0; i < sliceViews.Length; i++)
-            {
-                sliceViews[i].Setup(CurrentActiveSlices[i]);
-            }
+                CurrentActiveSlices = config.GenerateRandom8Slices();
+
+                if (CurrentActiveSlices.Length != sliceViews.Length)
+                {
+                    Debug.LogError("Uyarı: Üretilen dilim sayısı ile sahnedeki dilim UI sayısı eşleşmiyor!");
+                    _isSpinning = false;
+                    return;
+                }
+
+                for (int i = 0; i < sliceViews.Length; i++)
+                    sliceViews[i].Setup(CurrentActiveSlices[i]);
+
+                ui_image_wheel_base.transform.DOScale(Vector3.one, 0.1f)
+                    .OnComplete(() => _isSpinning = false); // Kurulum bitti, spin açıldı
+            });
         }
-        
+
         public void SpinToSlice(int targetSliceIndex, Action onComplete)
         {
             if (_isSpinning) return;
             _isSpinning = true;
 
-          
             float sliceAngle = 360f / totalSlices;
+            float targetFinalAngle = targetSliceIndex * sliceAngle;
 
-        
-            float targetAngle = -(targetSliceIndex * sliceAngle);
+            float currentAngle = ui_image_wheel_base.eulerAngles.z;
+            if (currentAngle > 180f) currentAngle -= 360f;
 
-          
-            float totalRotation = targetAngle - (360f * extraSpins);
+            float delta = targetFinalAngle - currentAngle;
+            delta -= 360f * extraSpins;
 
-       
-            ui_image_wheel_base.DORotate(new Vector3(0, 0, totalRotation), spinDuration, RotateMode.FastBeyond360)
+            ui_image_wheel_base.DORotate(
+                    new Vector3(0, 0, ui_image_wheel_base.eulerAngles.z + delta),
+                    spinDuration,
+                    RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuart)
                 .OnComplete(() =>
                 {
                     _isSpinning = false;
+                    float z = ui_image_wheel_base.eulerAngles.z % 360f;
+                    ui_image_wheel_base.eulerAngles = new Vector3(0, 0, z);
 
-                
-                    Vector3 currentEuler = ui_image_wheel_base.eulerAngles;
-                    ui_image_wheel_base.eulerAngles = new Vector3(0, 0, currentEuler.z % 360f);
 
-                  
                     onComplete?.Invoke();
                 });
         }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 0
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: 84c224e5b15bd9443ab046155e761b57, type: 3}

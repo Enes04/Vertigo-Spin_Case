@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Weapon_tier3_snipe3
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 5
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: d1ba2e6525691cc46a70f4a531a217e2, type: 3}

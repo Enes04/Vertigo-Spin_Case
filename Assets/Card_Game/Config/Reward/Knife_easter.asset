@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Knife_easter
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 4
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: bf3510c2ef6fbaf4e8556112895218d3, type: 3}

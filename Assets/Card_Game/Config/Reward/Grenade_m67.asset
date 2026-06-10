@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Grenade_m67
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 7
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: fd6cc1ca64b5b184e9d81cc79ab0333d, type: 3}

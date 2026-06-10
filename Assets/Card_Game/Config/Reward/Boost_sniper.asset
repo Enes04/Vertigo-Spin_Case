@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boost_sniper
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 6
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: e1fee1b1d9b3a8647875f2a4ac13e184, type: 3}

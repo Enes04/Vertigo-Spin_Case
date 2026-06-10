@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boost_pistol
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 6
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: 82c9cbdfd82fe044791cf9c0f668f3f6, type: 3}

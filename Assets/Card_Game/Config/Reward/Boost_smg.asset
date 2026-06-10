@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boost_smg
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 6
-  amount: 0
+  amount: 3
   rewardIcon: {fileID: 21300000, guid: 9e3d57ceddcd7d649843e94c205b3fbd, type: 3}
