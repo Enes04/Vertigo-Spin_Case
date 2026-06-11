@@ -10,6 +10,10 @@ namespace CardGame.UI
     {
         [SerializeField] private Image ui_image_icon;
         [SerializeField] private TextMeshProUGUI ui_text_amount;
+        // Setup fonksiyonunun üstüne bir yere ekleyebilirsin
+        public Sprite ItemIcon => ui_image_icon.sprite;
+        public int CurrentAmount => _currentAmount;
+        
         
         private int _currentAmount = 0;
 

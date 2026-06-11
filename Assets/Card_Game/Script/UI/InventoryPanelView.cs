@@ -37,7 +37,18 @@ namespace CardGame.UI
             }
         }
 
-        // Bombaya basıldığında kazanılan her şeyi silmek için
+        public List<(Sprite icon, int amount)> GetCollectedItems()
+        {
+            List<(Sprite icon, int amount)> collected = new List<(Sprite icon, int amount)>();
+            foreach (var item in _inventoryItems.Values)
+            {
+                if (item != null)
+                {
+                    collected.Add((item.ItemIcon, item.CurrentAmount));
+                }
+            }
+            return collected;
+        }
         public void ClearInventory()
         {
             foreach (var item in _inventoryItems.Values)
