@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580dbf05ae3fe4092b0cb85f8d654e00, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
+  wheelBackgroundSprite: {fileID: 21300000, guid: 3d853cfd66931564aa8669f2a9ec3c51, type: 3}
+  requiresOneBomb: 0
   rewardPool:
   - reward: {fileID: 11400000, guid: 32daff7268fe64777b8a04e67822e0ea, type: 2}
     dropWeight: 47
@@ -65,4 +67,3 @@ MonoBehaviour:
     dropWeight: 39
   - reward: {fileID: 11400000, guid: 212d4ab49c7a64f4a972033e2f982ef2, type: 2}
     dropWeight: 26
-  wheelBackgroundSprite: {fileID: 21300000, guid: 3d853cfd66931564aa8669f2a9ec3c51, type: 3}

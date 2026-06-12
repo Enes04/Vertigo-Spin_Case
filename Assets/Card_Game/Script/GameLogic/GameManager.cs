@@ -1,18 +1,18 @@
-// Scripts/GameLogic/GameManager.cs
 using UnityEngine;
 using UnityEngine.UI;
 using CardGame.Core;
 using CardGame.UI;
+using DG.Tweening;
 
 namespace CardGame.GameLogic
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("UI Referansları")]
+        [Header("UI references")]
         [SerializeField] private WheelView wheelView;
-        [SerializeField] private Button spinButton; // Çevirme butonumuz
-        [SerializeField] private Button exitButton; // YENİ EKLENDİ: Çıkış butonu referansı
-        [Header("Çark Veri Havuzları (Configs)")]
+        [SerializeField] private Button spinButton; 
+        [SerializeField] private Button exitButton; 
+        [Header("Spin Configs")]
         [SerializeField] private WheelConfig normalWheelPool;
         [SerializeField] private WheelConfig silverWheelPool;
         [SerializeField] private WheelConfig goldWheelPool;
@@ -23,7 +23,7 @@ namespace CardGame.GameLogic
         [SerializeField] private ZoneScrollerView zoneScrollerView;
         [SerializeField] private InventoryPanelView inventoryPanelView; 
         [SerializeField] private ExitSummaryView exitSummaryView; 
-        
+        [SerializeField] private BombScreenView bombScreenView; 
         
         private ZoneManager _zoneManager;
         private SpinCalculator _spinCalculator;
@@ -45,12 +45,10 @@ namespace CardGame.GameLogic
         {
             if (zoneScrollerView != null)
             {
-                // Eğer gelen bölge sayısı 1 ise (Yani oyun sıfırlanmışsa)
                 if (newZone == 1)
                 {
                     zoneScrollerView.ResetScroller();
                 }
-                // Eğer oyun normal şekilde devam ediyorsa
                 else
                 {
                     zoneScrollerView.AdvanceOneZone();
@@ -59,9 +57,10 @@ namespace CardGame.GameLogic
         }
         private void PrepareWheelForCurrentZone()
         {
+            if (spinButton != null) spinButton.interactable = false;
+            if (exitButton != null) exitButton.interactable = false;
             WheelConfig currentConfig = normalWheelPool;
 
-            // ZoneManager'a soruyoruz: Şu an kaçıncı bölgedeyiz ve tipi ne?
             ZoneType currentZoneType = _zoneManager.GetCurrentZoneType();
             
             if (currentZoneType == ZoneType.Safe) 
@@ -73,21 +72,21 @@ namespace CardGame.GameLogic
                 currentConfig = goldWheelPool;
             }
 
-            // Seçilen havuzdan rastgele 8'li üret ve UI'a diz
             wheelView.SetupWheelVisuals(currentConfig);
+            DOVirtual.DelayedCall(0.6f, () => 
+            {
+                if (spinButton != null) spinButton.interactable = true;
+                if (exitButton != null) exitButton.interactable = true;
+            });
         }
 
         private void OnSpinButtonClicked()
         {
-            // 1. Oyuncu peş peşe basamasın diye butonu hemen kilitle
             spinButton.interactable = false;
             exitButton.interactable = false;
-            // 2. Çarkın üzerindeki aktif 8 dilimi hesaplayıcıya gönderip kazananı seç
             var spinResult = _spinCalculator.CalculateSpinResult(wheelView.CurrentActiveSlices);
 
-            Debug.Log($"Çark dönüyor... Hedef İndeks: {spinResult.index}");
 
-            // 3. UI'a "Şu indekse dön" komutu ver ve animasyon bittiğinde OnSpinCompleted'i çağır
             wheelView.SpinToSlice(spinResult.index, () => 
             {
                 OnSpinCompleted(spinResult.slice);
@@ -97,11 +96,19 @@ namespace CardGame.GameLogic
         private void OnSpinCompleted(WheelSlice winningSlice)
         {
         
-            // Ödül Bomba mı kontrol et
             if (winningSlice.reward.isBomb)
             {
-                _zoneManager.HandleBombHit();
-                inventoryPanelView.ClearInventory();
+                bombScreenView.ShowBombScreen(() =>
+                {
+                    _zoneManager.HandleBombHit(); 
+                    inventoryPanelView.ClearInventory(); 
+                    PrepareWheelForCurrentZone(); 
+            }, () =>
+                {
+                    _zoneManager.AdvanceZone(); 
+                    PrepareWheelForCurrentZone();
+            });
+               
             }
             else
             {
@@ -111,19 +118,14 @@ namespace CardGame.GameLogic
                 {
                     inventoryPanelView.AddReward(winningSlice.reward);
                     PrepareWheelForCurrentZone();
-                    spinButton.interactable = true;
-                    exitButton.interactable = true;
-                });
+                  });
             }
 
-            // Animasyon ve işlemler bitti, butonu yeni tur için aktif et
          
         }
         private void OnExitButtonClicked()
         {
-            Debug.Log("🚪 OYUNDAN ÇIKILDI! Kazanılan tüm ödüller ana kasaya eklendi.");
             var collectedItems = inventoryPanelView.GetCollectedItems();
-            // 1. Kazanılan ödülleri oyuncunun asıl hesabına kaydetme (Save) işlemleri burada yapılır.
             if (collectedItems.Count == 0)
             {
                 ResetGameAfterExit();
@@ -131,21 +133,18 @@ namespace CardGame.GameLogic
             }
             exitSummaryView.ShowSummary(collectedItems, () => 
             {
-                // Oyuncu Collect butonuna basınca burası çalışacak
-                Debug.Log("💰 Kazanılanlar ana kasaya eklendi!");
                 ResetGameAfterExit();
             });
           
         }
         private void ResetGameAfterExit()
         {
-            _zoneManager.RestartGame(); // Bölgeyi 1 yap ve Scroller'ı başa sar
-            inventoryPanelView.ClearInventory(); // Soldaki envanter panelini temizle
+            _zoneManager.RestartGame();
+            inventoryPanelView.ClearInventory(); 
             PrepareWheelForCurrentZone(); 
         }
         private void OnDestroy()
         {
-            // Obje silinirken memory leak (bellek sızıntısı) olmaması için dinleyiciyi kaldırıyoruz
             if (spinButton != null)
             {
                 spinButton.onClick.RemoveListener(OnSpinButtonClicked);

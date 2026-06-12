@@ -6,7 +6,9 @@ namespace CardGame.Core
     public class RewardData : ScriptableObject
     {
         public RewardType rewardType;
-        public int amount;
+        [HideInInspector] public int amount;
+        public int minAmount = 1;
+        public int maxAmount = 5;
         public Sprite rewardIcon;
         
         public bool isBomb => rewardType == RewardType.Bomb; 

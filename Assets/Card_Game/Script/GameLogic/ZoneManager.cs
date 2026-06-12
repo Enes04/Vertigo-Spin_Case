@@ -1,4 +1,3 @@
-// Scripts/GameLogic/ZoneManager.cs
 using System;
 using CardGame.Core;
 
@@ -32,7 +31,6 @@ namespace CardGame.GameLogic
         {
             CurrentZone = 1;
     
-            // UI sayacının (Scroller) ve sistemlerin 1. bölgeye dönmesi için olayı tetikliyoruz
             OnZoneChanged?.Invoke(CurrentZone, GetCurrentZoneType());
         }
    

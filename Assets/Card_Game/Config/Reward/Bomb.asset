@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: CardGame.Core:CardGame.Core:RewardData
   rewardType: 3
   amount: 1
+  minAmount: 1
+  maxAmount: 1
   rewardIcon: {fileID: 21300000, guid: a362ae5c83fff6144ad4ab1be8b3b54a, type: 3}

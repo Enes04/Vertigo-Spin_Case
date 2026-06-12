@@ -22,7 +22,7 @@ namespace CardGame.UI
 
         public void SetupWheelVisuals(WheelConfig config)
         {
-            _isSpinning = true; // Kurulum sırasında spin'i kilitle
+            _isSpinning = true;
 
             ui_image_wheel_base.transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
             {
@@ -41,7 +41,7 @@ namespace CardGame.UI
 
                 if (CurrentActiveSlices.Length != sliceViews.Length)
                 {
-                    Debug.LogError("Uyarı: Üretilen dilim sayısı ile sahnedeki dilim UI sayısı eşleşmiyor!");
+                   
                     _isSpinning = false;
                     return;
                 }
@@ -50,7 +50,7 @@ namespace CardGame.UI
                     sliceViews[i].Setup(CurrentActiveSlices[i]);
 
                 ui_image_wheel_base.transform.DOScale(Vector3.one, 0.1f)
-                    .OnComplete(() => _isSpinning = false); // Kurulum bitti, spin açıldı
+                    .OnComplete(() => _isSpinning = false); 
             });
         }
 

@@ -54,22 +54,19 @@ namespace CardGame.UI
 
         public void ResetScroller()
         {
-            // 1. Devam eden animasyonlar varsa durdur ve spam kilidini aç
             _isAnimating = false;
 
-            // 2. Havuzdaki mevcut kutuları (ve onların animasyonlarını) tamamen yok et
             foreach (var item in _activeItems)
             {
                 if (item != null)
                 {
-                    item.RectTransform.DOKill(); // DOTween hareketini anında kes
+                    item.RectTransform.DOKill(); 
                     Destroy(item.gameObject);
                 }
             }
 
             _activeItems.Clear();
 
-            // 3. Havuzu 1. bölgeden itibaren yepyeni kutularla baştan diz
             InitializePool();
         }
 
@@ -77,7 +74,6 @@ namespace CardGame.UI
         {
             if (_isAnimating) return;
             _isAnimating = true;
-            Debug.Log("AdvanceZone");
             int completedTweens = 0;
 
             float despawnThreshold = -(_stepDistance * itemsToKeepOnLeft);
