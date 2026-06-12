@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580dbf05ae3fe4092b0cb85f8d654e00, type: 3}
   m_Name: Bronz
   m_EditorClassIdentifier: 
+  wheelBackgroundSprite: {fileID: 21300000, guid: 8c458c7d9a71a344f8475100f2eabf4f, type: 3}
+  spinIndicator: {fileID: 21300000, guid: ffa5e973f29cc8849bda4c31728560f0, type: 3}
+  requiresOneBomb: 1
   rewardPool:
   - reward: {fileID: 11400000, guid: 32daff7268fe64777b8a04e67822e0ea, type: 2}
     dropWeight: 10
@@ -65,4 +68,3 @@ MonoBehaviour:
     dropWeight: 36
   - reward: {fileID: 11400000, guid: 212d4ab49c7a64f4a972033e2f982ef2, type: 2}
     dropWeight: 41
-  wheelBackgroundSprite: {fileID: 21300000, guid: 8c458c7d9a71a344f8475100f2eabf4f, type: 3}

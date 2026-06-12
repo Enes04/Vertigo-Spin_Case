@@ -7,7 +7,7 @@ namespace CardGame.Core
     public class WheelConfig : ScriptableObject
     {
         [Header("Wheel Visuals")] public Sprite wheelBackgroundSprite;
-
+        public Sprite spinIndicator;
 
         public bool requiresOneBomb = true;
 
@@ -65,7 +65,7 @@ namespace CardGame.Core
             if (original.reward != null)
             {
                 cloneSlice.reward = Instantiate(original.reward);
-
+                cloneSlice.reward.name = original.reward.name;
                 cloneSlice.reward.amount = Random.Range(original.reward.minAmount, original.reward.maxAmount + 1);
             }
 

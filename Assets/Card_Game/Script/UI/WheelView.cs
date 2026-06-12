@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 using CardGame.Core;
+using UnityEngine.UI;
 
 
 namespace CardGame.UI
@@ -11,6 +12,8 @@ namespace CardGame.UI
         [Header("Wheel Settings")] [SerializeField]
         private RectTransform ui_image_wheel_base;
 
+        [SerializeField]
+        private Image ui_image_spin_indicator;
         [SerializeField] private int totalSlices = 8;
         [SerializeField] private float spinDuration = 3f;
         [SerializeField] private int extraSpins = 5;
@@ -35,7 +38,11 @@ namespace CardGame.UI
                 ui_image_wheel_base.eulerAngles = Vector3.zero;
 
                 if (config.wheelBackgroundSprite != null)
+                {
                     ui_image_wheel_base.GetComponent<UnityEngine.UI.Image>().sprite = config.wheelBackgroundSprite;
+                    ui_image_spin_indicator.sprite = config.spinIndicator;
+                }
+                    
 
                 CurrentActiveSlices = config.GenerateRandom8Slices();
 

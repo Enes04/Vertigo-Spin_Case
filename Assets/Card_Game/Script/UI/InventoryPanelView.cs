@@ -11,22 +11,21 @@ namespace CardGame.UI
         [SerializeField] private InventoryItemView itemPrefab;
 
      
-        private Dictionary<RewardData, InventoryItemView> _inventoryItems = new Dictionary<RewardData, InventoryItemView>();
-
+        private Dictionary<string, InventoryItemView> _inventoryItems = new Dictionary<string, InventoryItemView>();
         public void AddReward(RewardData reward)
         {
             if (reward == null || reward.isBomb) return;
 
-            if (_inventoryItems.ContainsKey(reward))
+            if (_inventoryItems.ContainsKey(reward.name))
             {
-                _inventoryItems[reward].AddAmount(reward.amount);
+                _inventoryItems[reward.name].AddAmount(reward.amount);
             }
             else
             {
                 InventoryItemView newItem = Instantiate(itemPrefab, container);
                 newItem.Setup(reward.rewardIcon, reward.amount);
                 
-                _inventoryItems.Add(reward, newItem);
+                _inventoryItems.Add(reward.name, newItem);
             }
         }
 

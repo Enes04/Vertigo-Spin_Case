@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   wheelBackgroundSprite: {fileID: 21300000, guid: 3d853cfd66931564aa8669f2a9ec3c51, type: 3}
+  spinIndicator: {fileID: 21300000, guid: 6d064bb8ea3021d4a91a17ae939ed791, type: 3}
   requiresOneBomb: 0
   rewardPool:
   - reward: {fileID: 11400000, guid: 32daff7268fe64777b8a04e67822e0ea, type: 2}
