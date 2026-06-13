@@ -3,8 +3,10 @@
  Gameplay
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=tHO6OR-sA3g">v
-  </a>
+  <video width="100%" controls>
+    <source src="Assets/Media/movie_006.mp4" type="video/mp4">
+    Tarayıcınız video etiketini desteklemiyor.
+  </video>
 </p>
 
 <br>
