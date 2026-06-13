@@ -1,10 +1,8 @@
 
-<p align="center">
-  <video width="100%" controls>
-    <source src="Assets/Media/movie_006.mp4" type="video/mp4">
-    Tarayıcınız video etiketini desteklemiyor.
-  </video>
-</p>
+
+
+https://github.com/user-attachments/assets/b9954e75-b8ed-4f24-9b0c-c2d7993c06cb
+
 
 <br>
 
