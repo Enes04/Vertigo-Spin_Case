@@ -2,9 +2,12 @@
 
  Gameplay
 
-<video width="100%" controls>
-  <source src="https://www.youtube.com/watch?v=tHO6OR-sA3g">
-</video>
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=tHO6OR-sA3g">v
+  </a>
+</p>
+
+<br>
 
 
 
