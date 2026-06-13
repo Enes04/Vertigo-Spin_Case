@@ -1,12 +1,12 @@
- (Vertigo Games - Demo Project)
 
- Gameplay 
 <p align="center">
   <video width="100%" controls>
     <source src="Assets/Media/movie_006.mp4" type="video/mp4">
     Tarayıcınız video etiketini desteklemiyor.
   </video>
 </p>
+
+<br>
 
 <br>
 
