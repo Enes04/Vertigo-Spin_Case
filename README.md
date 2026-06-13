@@ -1,16 +1,14 @@
-# 🎡 Wheel of Fortune (Vertigo Games - Demo Project)
+ (Vertigo Games - Demo Project)
 
-
-## 🎥 Gameplay (Oynanış)
+ Gameplay
 
 <video width="100%" controls>
-  <source src="Assets/Media/movie_006.mp4" type="video/mp4">
-  Tarayıcınız video etiketini desteklemiyor.
+  <source src="https://www.youtube.com/watch?v=tHO6OR-sA3g">
 </video>
 
----
 
-## 📱 Responsive UI (Esnek Çözünürlük Desteği)
+
+ Responsive UI (Esnek Çözünürlük Desteği)
 Oyunun arayüzü; Anchor, Content Size Fitter ve Preserve Aspect ayarları kullanılarak farklı cihaz ekranlarında esnemeyecek veya bozulmayacak şekilde kurgulanmıştır.
 
 <p align="center">
