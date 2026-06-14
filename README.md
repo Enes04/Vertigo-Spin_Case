@@ -9,9 +9,10 @@ https://github.com/user-attachments/assets/b9954e75-b8ed-4f24-9b0c-c2d7993c06cb
 <br>
 
 
-
- Responsive UI (Esnek Çözünürlük Desteği)
+Responsive UI (Esnek Çözünürlük Desteği)
 Oyunun arayüzü; Anchor, Content Size Fitter ve Preserve Aspect ayarları kullanılarak farklı cihaz ekranlarında esnemeyecek veya bozulmayacak şekilde kurgulanmıştır.
+
+Data-Driven Design (Scriptable Objects):** Çark havuzları (`WheelConfig`) ve ödüller (`RewardData`) koda dokunmadan, tamamen editör üzerinden yönetilebilir hale getirildi. Ödüller için Min-Max değerleri eklenerek, oyun içinde "Clone (Klonlama)" mantığıyla dinamik sayılar üretildi. 
 
 <p align="center">
   <img src="Assets/Media/4-3.png" width="100%" title="Tablet Görünümü (4:3)"><br>
